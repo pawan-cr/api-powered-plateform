@@ -3,27 +3,30 @@ import Translator from './components/Translator';
 import SpeechToText from './components/SpeechToText';
 import Chat from './components/Chat';
 import Feedback from './components/Feedback';
-import { useState } from 'react';
+import Signup from './components/Signup';
+// import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import Write from './components/Write';
+import Login from './components/Login';
 
 
 function App() {
-  const [activeTab,setActiveTab] = useState('translator')
   return (
-    <div className="App">
-      <h1 className='heading'>AI-POWERED-PLATEFORM</h1>
-      <div className='button'>
-      <button onClick={()=>setActiveTab('translator')}>Translator</button>
-      <button onClick={()=>setActiveTab('speedToText')}>SpeechToText</button>
-      <button onClick={()=>setActiveTab('Chat')}>Chat</button>
-      <button onClick={()=>setActiveTab('Feedback')}>Feedback</button>
-      </div>
-      {activeTab === 'translator' && <Translator/>}
-      {activeTab === 'speedToText' && <SpeechToText/>}
-      {activeTab === 'Chat' && <Chat/>}
-      {activeTab === 'Feedback' && <Feedback/>}
-     
-    </div>
-  );
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Dashboard/>} />
+          <Route path='/translator' element={<Translator/>} />
+          <Route path='/speech-to-text' element={<SpeechToText/>} />
+          <Route path='/chat' element={<Chat/>} />
+          <Route path='/feedback' element={<Feedback/>} />
+          <Route path= '/write' element={<Write/>} />
+          <Route path= '/register' element={<Signup/>} />
+          <Route path= '/login' element = {<Login/>} />
+          
+    
+     </Routes>
+     </BrowserRouter>  );
 }
 
 export default App;
